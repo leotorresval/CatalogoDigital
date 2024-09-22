@@ -45,9 +45,13 @@ public class ProductRest {
     }
 
     @DeleteMapping(value="delete/{id}")
-    public ResponseEntity<Boolean> delete(@PathVariable("id") Long  numero){
-        productService.deleteById(numero);
-        return ResponseEntity.ok((productService.findById(numero)!=null));
+    public ResponseEntity<Boolean> delete(@PathVariable("id") Long  id){
+        Optional<Product> productOptional = productService.findById(id);
+        if (productOptional.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(false);
+        }
+        productService.deleteById(id);
+        return ResponseEntity.ok(true);
     }
 
 }
