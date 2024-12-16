@@ -21,7 +21,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@WebMvcTest(ProductRest.class) // Le indicamos a Spring que pruebe este controlador
+@WebMvcTest(ProductRest.class)
 class ProductRestTest {
 
     @Autowired
@@ -31,7 +31,7 @@ class ProductRestTest {
     private ProductService productService;
 
     @Autowired
-    private ObjectMapper objectMapper; // Para convertir objetos a JSON y viceversa
+    private ObjectMapper objectMapper;
 
     @BeforeEach
     void setUp() {
@@ -48,7 +48,7 @@ class ProductRestTest {
 
         mockMvc.perform(post("/products/")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(product))) // Convierte el objeto a JSON
+                        .content(objectMapper.writeValueAsString(product)))
                 .andExpect(status().isCreated())
                 .andExpect(header().string("Location", "/products/1"))
                 .andExpect(jsonPath("$.name").value("Laptop"));
@@ -115,6 +115,6 @@ class ProductRestTest {
                 .andExpect(content().string("false"));
 
         verify(productService, times(1)).findById(1L);
-        verify(productService, never()).deleteById(1L); // Nunca debería intentar eliminar un producto no encontrado
+        verify(productService, never()).deleteById(1L);
     }
 }

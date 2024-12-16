@@ -10,6 +10,9 @@ public class Product {
     @Column(name = "prod_id")
     private Long id;
 
+    @Column(name="prod_codigo", unique = true)
+    private String code;
+
     @Column(name = "prod_name")
     private String name;
 
@@ -34,6 +37,14 @@ public class Product {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getName() {

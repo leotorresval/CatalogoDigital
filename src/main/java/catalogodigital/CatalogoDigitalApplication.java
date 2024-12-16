@@ -25,7 +25,7 @@ public class CatalogoDigitalApplication extends SpringBootServletInitializer {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("localhost")
+                        .allowedOrigins("*")
                         .allowedMethods("GET", "POST", "PUT", "DELETE")
                         .maxAge(3600);
             }

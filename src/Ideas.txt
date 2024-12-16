@@ -1,0 +1,3 @@
+Gestion de pedidos -> Carrito de compra, cierre de pedido
+manejo de pedido por vendedor, despacho
+Catalogo de productos -> crear productos, catalogo de productos, favoritos

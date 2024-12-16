@@ -14,7 +14,6 @@ import java.util.Optional;
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 class ProductServiceTest {
 
@@ -26,7 +25,8 @@ class ProductServiceTest {
 
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.openMocks(this); // Inicializa los mocks y las inyecciones de dependencias
+        MockitoAnnotations.openMocks(this);
+
     }
 
     @Test
@@ -40,7 +40,7 @@ class ProductServiceTest {
 
         assertNotNull(savedProduct);
         assertEquals("Laptop", savedProduct.getName());
-        verify(productRepository, times(1)).save(product); // Verifica que se llame al método save() del repositorio
+        verify(productRepository, times(1)).save(product);
     }
 
     @Test
@@ -61,7 +61,7 @@ class ProductServiceTest {
         assertEquals(2, result.size());
         assertEquals("Laptop", result.get(0).getName());
         assertEquals("Phone", result.get(1).getName());
-        verify(productRepository, times(1)).findAll(); // Verifica que se llame al método findAll() del repositorio
+        verify(productRepository, times(1)).findAll();
     }
 
     @Test
@@ -76,7 +76,7 @@ class ProductServiceTest {
 
         assertTrue(foundProduct.isPresent());
         assertEquals("Tablet", foundProduct.get().getName());
-        verify(productRepository, times(1)).findById(1L); // Verifica que se llame al método findById() del repositorio
+        verify(productRepository, times(1)).findById(1L);
     }
 
     @Test
@@ -88,7 +88,7 @@ class ProductServiceTest {
 
         productService.delete(product);
 
-        verify(productRepository, times(1)).delete(product); // Verifica que se llame al método delete() del repositorio
+        verify(productRepository, times(1)).delete(product);
     }
 
     @Test
@@ -97,7 +97,7 @@ class ProductServiceTest {
 
         productService.deleteById(1L);
 
-        verify(productRepository, times(1)).deleteById(1L); // Verifica que se llame al método deleteById() del repositorio
+        verify(productRepository, times(1)).deleteById(1L);
     }
 
 }
